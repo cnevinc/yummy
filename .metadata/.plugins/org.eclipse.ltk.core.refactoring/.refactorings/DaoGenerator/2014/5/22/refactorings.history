@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;de.greenrobot.daogenerator.gentest.ExampleDaoGenerator.AddReportTable(...)&apos; to &apos;addArticleTable&apos;&#x0D;&#x0A;- Original project: &apos;DaoGenerator&apos;&#x0D;&#x0A;- Original element: &apos;de.greenrobot.daogenerator.gentest.ExampleDaoGenerator.AddReportTable(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;de.greenrobot.daogenerator.gentest.ExampleDaoGenerator.addArticleTable(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;AddReportTable&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;de.greenrobot.daogenerator.gentest{ExampleDaoGenerator.java[ExampleDaoGenerator~AddReportTable~QSchema;" name="addArticleTable" references="true" stamp="1401565578987" version="1.0"/>
+</session>

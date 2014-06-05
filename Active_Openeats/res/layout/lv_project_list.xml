@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left|center_vertical"
+    android:orientation="horizontal" >
+
+    <com.android.volley.util.NetworkImageView
+        android:id="@+id/iv_thumb"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="6dp" />
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_thumb"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="6dp"
+        android:text="來一客鮮蝦麵"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/tv_test_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_product_name"
+        android:layout_centerHorizontal="true"
+        android:text="項目:大腸桿菌,抗生素,農藥"
+        android:textSize="14dp" />
+    <!--
+        ImageView
+        android:id="@+id/wathclist_ib"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="6dp"
+        android:contentDescription="Click to Watch"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/watchlist_button"
+        android:textOff=""
+        android:textOn="" /
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_test_item"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="#CCC"
+        android:gravity="center_horizontal"
+        android:paddingBottom="1dp"
+        android:paddingRight="1dp" >
+
+        <TextView
+            android:id="@+id/tv_achieve_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text=" 56% \n達成率  "
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_people_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text=" 160人\n贊助 "
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_days_b4_due"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="20天\n截止"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+</RelativeLayout>

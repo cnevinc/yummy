@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left|center_vertical"
+    android:orientation="horizontal" >
+
+    <com.android.volley.util.NetworkImageView
+        android:id="@+id/iv_thumb"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="6dp" />
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_thumb"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="6dp"
+        android:text="來一客鮮蝦麵"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/tv_project_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_product_name"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true"
+        android:text="檢測詳細文字"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:id="@+id/line_pro1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_project_desc"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="#CCC"
+        android:gravity="center_horizontal"
+        android:padding="1dp" >
+
+        <TextView
+            android:id="@+id/tv_amount_required"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text=" 18500\n所需金額 "
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_total_doation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text=" 10360\n已募得金額 "
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_pro2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line_pro1"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="#CCC"
+        android:padding="1dp" >
+
+        <TextView
+            android:id="@+id/tv_achieve_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text=" 56% \n達成率  "
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_people_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text=" 160人\n贊助 "
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_days_b4_due"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="20天\n截止"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line_pro2"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:padding="5dp"
+        android:text="檢驗項目"
+        android:textSize="20dp" />
+
+    <!-- ListView
+        android:id="@+id/lv_test_items"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/tv_6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="#CCC"
+        android:padding="1dp" /-->
+
+	<TableLayout
+	    android:id="@+id/tl_test_items"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@+id/tv_6"
+	    android:background="#CCC"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+	    android:layout_marginRight="@dimen/activity_horizontal_margin"
+	    android:padding="1dp"
+	    android:stretchColumns="*" />
+
+    <TextView
+        android:id="@+id/tv_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tl_test_items"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:padding="5dp"
+        android:text="檢驗單位"
+        android:textSize="20dp" />
+
+    <TableLayout
+	    android:id="@+id/tl_tester"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@+id/tv_8"
+	    android:background="#CCC"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+	    android:layout_marginRight="@dimen/activity_horizontal_margin"
+	    android:padding="1dp"
+	    android:stretchColumns="*" />
+    
+
+</RelativeLayout>

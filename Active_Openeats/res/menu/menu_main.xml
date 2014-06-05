@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    <item
+        android:id="@+id/menu_search"
+        android:checkable="true"
+        android:icon="@drawable/searchalt_01"
+        android:showAsAction="ifRoom|withText"
+        android:title="Search"
+        android:actionViewClass="android.widget.SearchView" />
+
+</menu>
