@@ -36,16 +36,14 @@ public class Act_RecipeDetail extends Activity {
 
 	private static final String TAG = "nevin";
 	
-	static int DEFAULT_TEXT_SIZE=13;
+	static int DEFAULT_TEXT_SIZE=16;
 	static int MAX_WIDTH  = 600;
 	static int MAX_HEIGHT = 400;
-	static int scale_ratio;
+	static int scale_ratio=80;
 	
-	TextView mDetail;
-	ProgressBar mProgressBar;
-	ScrollView mScrollView;
-	String body;
-	Handler handler;
+	
+	WebView mWebView;
+	String mBody;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,111 +52,23 @@ public class Act_RecipeDetail extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		if (this.getIntent().getStringExtra("body") != null)
-			body = this.getIntent().getStringExtra("body");
+			mBody = this.getIntent().getStringExtra("body");
 
-		mScrollView= (ScrollView)this.findViewById(R.id.scrollView1);
-		
-		mDetail = (TextView) this.findViewById(R.id.tv_recipe_detail);
+		Log.d(TAG,"~~~~~~~~~~"+mBody);
+		mBody= mBody.replace("<img ", "<img style=\"max-width:80%; max-height:auto;\" ");
+		mBody= mBody.replaceAll("(?i)(font-size): [0-9]+pt","");
+		Log.d(TAG,"------------"+mBody);
 
-		if (this.getIntent().getStringExtra("body") != null)
-			body = this.getIntent().getStringExtra("body");
-
-		body= body.replace("<img ", "<img width=80% ");
+		mWebView = (WebView)this.findViewById(R.id.webView1);
 		
-		Log.d(TAG,"HI!!!    "+body);
-		
-		WebView wv = (WebView)this.findViewById(R.id.webView1);
-		WebSettings wb = wv.getSettings();
+		WebSettings wb = mWebView.getSettings();
+		wb.setDefaultFontSize(++DEFAULT_TEXT_SIZE);
 		wb.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-		wb.setJavaScriptEnabled(true);
 		wb.setSupportZoom(true);
-		
-		String baseUrl="file://"+Environment.getExternalStorageDirectory().getPath()+"myimg";
-		wv.loadDataWithBaseURL(baseUrl, body, "text/html", "utf-8", null);
+		mWebView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+		String baseUrl="file://"+Environment.getExternalStorageDirectory().getPath()+"/myimg";
+		mWebView.loadDataWithBaseURL(baseUrl, mBody, "text/html", "utf-8", null);
 
-		/*
-		mDetail.setTextSize(DEFAULT_TEXT_SIZE);
-		mDetail.setText(Html.fromHtml(body));
-
-		mProgressBar = (ProgressBar) this.findViewById(R.id.bar);
-		mDetail.setMovementMethod(ScrollingMovementMethod.getInstance());// 皛
-		handler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				// TODO Auto-generated method stub
-				if (msg.what == 0x101) {
-					mProgressBar.setVisibility(View.GONE);
-					mDetail.setText((CharSequence) msg.obj);
-				}
-				super.handleMessage(msg);
-			}
-		};
-		Thread t = new Thread(new ImageTask());
-		t.start();
-		mProgressBar.setVisibility(View.VISIBLE);
-*/
-	}
-	class ImageTask implements Runnable {
-		Message msg = Message.obtain();
-
-		@Override
-		public void run() {
-
-			ImageGetter imageGetter = new ImageGetter() {
-				@Override
-				public Drawable getDrawable(String source) {
-					// TODO Auto-generated method stub
-					URL url;
-					Bitmap bitmap=null;
-					Drawable drawable=null;
-					try {
-						url = new URL(source);
-						
-						// Download the image and tirm it's size
-						BitmapFactory.Options o = new BitmapFactory.Options();
-			            o.inJustDecodeBounds = true;
-			            BitmapFactory.decodeStream(
-			                    (InputStream) url.getContent(), null, o);
-			            // The new size we want to scale to
-			            final int REQUIRED_SIZE = 200;
-
-			            // Find the correct scale value. It should be the power of 2.
-			            int scale = 1;
-			            while ( //o.outWidth / scale / 2 >= REQUIRED_SIZE &&
-			                     o.outHeight / scale / 2 >= REQUIRED_SIZE)
-			                scale *= 2;
-
-			            // Decode with inSampleSize
-			            BitmapFactory.Options o2 = new BitmapFactory.Options();
-			            o2.inSampleSize = scale;
-			            bitmap = BitmapFactory.decodeStream(
-			                    (InputStream) url.getContent(), null, o2);
-
-			            drawable = new BitmapDrawable(bitmap);
-			            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),
-			                    drawable.getIntrinsicHeight());
-			            
-						
-						// scale up the low quality pics
-						int scale_y = MAX_HEIGHT/drawable.getIntrinsicHeight();
-						drawable.setBounds(0, 0,
-								drawable.getIntrinsicWidth()*scale_y,
-								drawable.getIntrinsicHeight()*scale_y);
-						
-					} catch (MalformedURLException e) {
-						Log.e(TAG, "MalformedURLException" + e.toString());
-					} catch (IOException e) {
-						Log.e(TAG, "IOException" + e.toString());
-					}
-					return drawable;
-				}
-			};
-			CharSequence test = Html.fromHtml(body, imageGetter, null);
-			Log.d(TAG,"~~~~"+test);
-			msg.what = 0x101;
-			msg.obj = test;
-			handler.sendMessage(msg);
-		}
 	}
 	@Override
 	public void onBackPressed() {
@@ -177,47 +87,51 @@ public class Act_RecipeDetail extends Activity {
 		return super.onCreateOptionsMenu(menu);
 	}
 
-	private int currentScrollLocation = 0 ;
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 
 		switch (id) {
 		case R.id.action_next_page:
-			mScrollView.post(new Runnable() {
+			mWebView.post(new Runnable() {
 				public void run() {
-					mScrollView.scrollTo(currentScrollLocation, mScrollView.getBottom());
-					currentScrollLocation= mScrollView.getBottom();
+					if (mWebView.getContentHeight() * mWebView.getScale() >= mWebView.getScrollY() ){
+						mWebView.scrollBy(0, (int)mWebView.getHeight());
+					}
 				}
 			});
 			return true;
 		case R.id.action_previous_page:
-			mScrollView.post(new Runnable() {
+			mWebView.post(new Runnable() {
 				public void run() {
-					mScrollView.scrollTo(currentScrollLocation, mScrollView.getTop());
-					currentScrollLocation=mScrollView.getTop();
+					if (mWebView.getScrollY() - mWebView.getHeight() > 0){
+						mWebView.scrollBy(0, -(int)mWebView.getHeight());
+					}else{
+						mWebView.scrollTo(0, 0);
+					}
 				}
 			});
 			return true;
 		case R.id.action_font_up:
-			
-			mDetail.setTextSize(++DEFAULT_TEXT_SIZE);
+			DEFAULT_TEXT_SIZE=DEFAULT_TEXT_SIZE+5;
+			mWebView.getSettings().setDefaultFontSize(DEFAULT_TEXT_SIZE);
+//			mWebView.loadDataWithBaseURL(null, mBody, "text/html", "utf-8", null);
 			return true;
 		case R.id.action_font_down:
-			
-			mDetail.setTextSize(--DEFAULT_TEXT_SIZE);
+			DEFAULT_TEXT_SIZE=DEFAULT_TEXT_SIZE-5;
+			mWebView.getSettings().setDefaultFontSize(DEFAULT_TEXT_SIZE);
+//			mWebView.loadDataWithBaseURL(null, mBody, "text/html", "utf-8", null);
 			return true;
 		case R.id.action_big_img:
-			MAX_HEIGHT += 300;
-			Thread t = new Thread(new ImageTask());
-			t.start();
-			mProgressBar.setVisibility(View.VISIBLE);
+			int new_ratio = scale_ratio+20;
+			mWebView.zoomIn(); 
 			return true;
 		case R.id.action_small_img:
-			MAX_HEIGHT -= 300;
-			Thread t2 = new Thread(new ImageTask());
-			t2.start();
-			mProgressBar.setVisibility(View.VISIBLE);
+//			new_ratio = scale_ratio-20;
+//			mBody= mBody.replace("<img width=80% ", "<img width=0% ");
+//			scale_ratio = new_ratio;
+//			mWebView.loadDataWithBaseURL(null, mBody, "text/html", "utf-8", null);
+			mWebView.zoomOut();
 			return true;
 
 			// up button

@@ -7,7 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.cgearc.yummy.Act_RecipeDetail.ImageTask;
 import com.cgearc.yummy.Frg_RecipeList.SearchCompletedListener;
 
 import android.app.Activity;
