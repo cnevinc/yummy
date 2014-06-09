@@ -17,20 +17,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/action_next_page"
+        android:showAsAction="ifRoom|withText"
+        android:title="N"/>
+    <item
+        android:id="@+id/action_previous_page"
+        android:showAsAction="ifRoom|withText"
+        android:title="P"/>
+    <item
         android:id="@+id/action_big_img"
         android:showAsAction="ifRoom|withText"
-        android:title="Big"/>
+        android:title="B"/>
     <item
         android:id="@+id/action_small_img"
         android:showAsAction="ifRoom|withText"
-        android:title="Small"/>
+        android:title="S"/>
     <item
         android:id="@+id/action_font_up"
         android:showAsAction="ifRoom|withText"
-        android:title="up"/>
+        android:title="U"/>
     <item
         android:id="@+id/action_font_down"
         android:showAsAction="ifRoom|withText"
-        android:title="down"/>
+        android:title="D"/>
 
 </menu>

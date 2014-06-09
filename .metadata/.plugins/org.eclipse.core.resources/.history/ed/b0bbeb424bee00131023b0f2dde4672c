@@ -1,0 +1,9 @@
+package com.cgearc.yummy;
+
+import android.app.Activity;
+
+public interface SearchCompletedListener {
+	void onSearchCompleted();
+
+	
+}

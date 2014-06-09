@@ -1,0 +1,23 @@
+1401381631216	Delete element
+1401385480060	Delete element
+1401385492815	Delete element
+1401385583937	Delete element
+1401385793252	Rename package 'com.example.android.navigationdrawerexample'
+1401388511217	Rename type 'PlanetFragment'
+1401388541910	Rename compilation unit 's.java'
+1401411263340	Rename type 'DisplayFragment'
+1401456965374	Copy compilation unit
+1401457035892	Copy file
+1401459558814	Rename field 'mImageUri'
+1401459596621	Move files
+1401459629397	Rename resource 'drawable-ldpi'
+1401460051517	Rename local variable 'planet'
+1401464066043	Rename field 'mFrameLayout'
+1401464072677	Rename field 'mFrameLayout'
+1401499964795	Delete element
+1401499967328	Delete element
+1401500060908	Rename type 'FoodApplication'
+1401500146964	Rename package 'com.cgearc.yummy.volley'
+1401500155595	Rename package 'com.cgearc.yummy.volley.util'
+1401566165021	Rename method 'syncUser'
+1401566685759	Rename local variable 'foodReq'

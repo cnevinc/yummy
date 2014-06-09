@@ -1,0 +1,5 @@
+package com.cgearc.yummy;
+
+public interface SearchCompletedListener {
+
+}

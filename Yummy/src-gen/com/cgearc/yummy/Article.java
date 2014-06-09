@@ -31,6 +31,7 @@ public class Article {
     private transient ArticleDao myDao;
 
     private List<Picture> pictureList;
+    private List<Favorite> favoriteList;
 
     public Article() {
     }
@@ -178,6 +179,28 @@ public class Article {
     /** Resets a to-many relationship, making the next get call to query for a fresh result. */
     public synchronized void resetPictureList() {
         pictureList = null;
+    }
+
+    /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */
+    public List<Favorite> getFavoriteList() {
+        if (favoriteList == null) {
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            FavoriteDao targetDao = daoSession.getFavoriteDao();
+            List<Favorite> favoriteListNew = targetDao._queryArticle_FavoriteList(id);
+            synchronized (this) {
+                if(favoriteList == null) {
+                    favoriteList = favoriteListNew;
+                }
+            }
+        }
+        return favoriteList;
+    }
+
+    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+    public synchronized void resetFavoriteList() {
+        favoriteList = null;
     }
 
     /** Convenient call for {@link AbstractDao#delete(Object)}. Entity must attached to an entity context. */

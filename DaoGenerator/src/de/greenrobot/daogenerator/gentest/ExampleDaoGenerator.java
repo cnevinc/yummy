@@ -31,7 +31,7 @@ import de.greenrobot.daogenerator.ToMany;
 public class ExampleDaoGenerator {
 
     public static void main(String[] args) throws Exception {
-        Schema schema = new Schema(2, "com.cgearc.yummy");
+        Schema schema = new Schema(5, "com.cgearc.yummy");
 
         addArticleTable(schema);
 
@@ -64,9 +64,14 @@ public class ExampleDaoGenerator {
         Property article_id = pic.addLongProperty("article_id").notNull().getProperty();
         
         pic.addToOne(article, article_id);
-        
         article.addToMany(pic, article_id);
-         
+       
+        Entity fav = schema.addEntity("Favorite");
+        fav.addStringProperty("blogger_id");
+        Property farticle_id = fav.addLongProperty("article_id").primaryKey().getProperty();
+        fav.addToOne(article, farticle_id);
+        article.addToMany(fav, farticle_id);        
+//      
     }
    
 

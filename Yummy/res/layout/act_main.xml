@@ -26,11 +26,22 @@
          space available using match_parent in both dimensions.
     -->
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000" />
+        android:background="#000000" >
+
+        <ProgressBar
+            android:id="@+id/pr_act_main"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
 
     <!--
          android:layout_gravity="start" tells DrawerLayout to treat

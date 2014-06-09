@@ -15,7 +15,7 @@ public final class R {
         public static final int activity_out=0x7f040003;
     }
     public static final class array {
-        public static final int planets_array=0x7f080000;
+        public static final int drawer_item_array=0x7f080000;
     }
     public static final class attr {
     }
@@ -32,51 +32,51 @@ public final class R {
     }
     public static final class drawable {
         public static final int action_search=0x7f020000;
-        public static final int boat=0x7f020001;
-        public static final int dinner=0x7f020002;
-        public static final int drawer_shadow=0x7f020003;
-        public static final int earth=0x7f020004;
-        public static final int front=0x7f020005;
-        public static final int hawaii=0x7f020006;
-        public static final int ic_drawer=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int jupiter=0x7f020009;
-        public static final int mars=0x7f02000a;
-        public static final int mercury=0x7f02000b;
-        public static final int neptune=0x7f02000c;
-        public static final int overlay_bg=0x7f02000d;
-        public static final int park=0x7f02000e;
-        public static final int picnic=0x7f02000f;
-        public static final int present=0x7f020010;
-        public static final int rose=0x7f020011;
-        public static final int saturn=0x7f020012;
-        public static final int spa=0x7f020013;
-        public static final int sunrise=0x7f020014;
-        public static final int touch_layer_bg=0x7f020015;
-        public static final int uranus=0x7f020016;
-        public static final int venus=0x7f020017;
-        public static final int zoo=0x7f020018;
+        public static final int drawer_shadow=0x7f020001;
+        public static final int earth=0x7f020002;
+        public static final int ic_drawer=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int jupiter=0x7f020005;
+        public static final int loading=0x7f020006;
+        public static final int mars=0x7f020007;
+        public static final int mercury=0x7f020008;
+        public static final int neptune=0x7f020009;
+        public static final int notfound=0x7f02000a;
+        public static final int overlay_bg=0x7f02000b;
+        public static final int saturn=0x7f02000c;
+        public static final int touch_layer_bg=0x7f02000d;
+        public static final int uranus=0x7f02000e;
+        public static final int venus=0x7f02000f;
     }
     public static final class id {
-        public static final int action_big_img=0x7f0b000e;
-        public static final int action_font_down=0x7f0b0011;
-        public static final int action_font_up=0x7f0b0010;
-        public static final int action_search=0x7f0b0012;
-        public static final int action_small_img=0x7f0b000f;
-        public static final int bar=0x7f0b0006;
+        public static final int action_big_img=0x7f0b0016;
+        public static final int action_font_down=0x7f0b0019;
+        public static final int action_font_up=0x7f0b0018;
+        public static final int action_next_page=0x7f0b0014;
+        public static final int action_previous_page=0x7f0b0015;
+        public static final int action_search=0x7f0b001a;
+        public static final int action_searchview=0x7f0b001b;
+        public static final int action_small_img=0x7f0b0017;
+        public static final int bar=0x7f0b0007;
         public static final int content_frame=0x7f0b0001;
-        public static final int display_frame=0x7f0b0008;
+        public static final int display_frame=0x7f0b000c;
         public static final int drawer_layout=0x7f0b0000;
-        public static final int image=0x7f0b000a;
-        public static final int left_drawer=0x7f0b0002;
-        public static final int recipe_container=0x7f0b0003;
-        public static final int recipe_grid=0x7f0b0007;
-        public static final int scrollView1=0x7f0b0004;
-        public static final int subtitle=0x7f0b000c;
-        public static final int textView1=0x7f0b0009;
-        public static final int title=0x7f0b000b;
-        public static final int touch_layer=0x7f0b000d;
-        public static final int tv_recipe_detail=0x7f0b0005;
+        public static final int image=0x7f0b000e;
+        public static final int imageView1=0x7f0b0012;
+        public static final int left_drawer=0x7f0b0003;
+        public static final int linearLayout1=0x7f0b000f;
+        public static final int lv_tag=0x7f0b0009;
+        public static final int pb_r_search=0x7f0b000a;
+        public static final int pr_act_main=0x7f0b0002;
+        public static final int recipe_container=0x7f0b0004;
+        public static final int recipe_grid=0x7f0b000b;
+        public static final int scrollView1=0x7f0b0005;
+        public static final int subtitle=0x7f0b0011;
+        public static final int textView1=0x7f0b000d;
+        public static final int title=0x7f0b0010;
+        public static final int touch_layer=0x7f0b0013;
+        public static final int tv_recipe_detail=0x7f0b0006;
+        public static final int webView1=0x7f0b0008;
     }
     public static final class integer {
         /**  Number of columns in the grid view, which changes based on device size. 
@@ -88,14 +88,16 @@ public final class R {
     public static final class layout {
         public static final int act_main=0x7f030000;
         public static final int act_recipe_detail=0x7f030001;
-        public static final int drawer_list_item=0x7f030002;
-        public static final int fragment_hot_recipe=0x7f030003;
-        public static final int fragment_planet=0x7f030004;
-        public static final int grid_item=0x7f030005;
+        public static final int act_recipe_search=0x7f030002;
+        public static final int drawer_list_item=0x7f030003;
+        public static final int fragment_hot_recipe=0x7f030004;
+        public static final int fragment_planet=0x7f030005;
+        public static final int grid_item=0x7f030006;
     }
     public static final class menu {
         public static final int detail=0x7f0a0000;
         public static final int main=0x7f0a0001;
+        public static final int search=0x7f0a0002;
     }
     public static final class string {
         public static final int action_websearch=0x7f070003;

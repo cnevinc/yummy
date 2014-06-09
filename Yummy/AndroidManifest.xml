@@ -28,14 +28,15 @@
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
+    
     <application
         android:name=".MyApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/MyTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".Act_Main"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,6 +46,8 @@
         </activity>
         <activity
             android:name=".Act_RecipeDetail"/>
+        <activity
+            android:name=".Act_RecipeSearch"/>
     </application>
 
 </manifest>

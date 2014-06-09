@@ -1,4 +1,4 @@
-g?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2014 The Android Open Source Project
 
@@ -28,7 +28,7 @@ g?xml version="1.0" encoding="utf-8"?>
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,14 +40,22 @@ g?xml version="1.0" encoding="utf-8"?>
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp" />
-
-            <ProgressBar
-                android:id="@+id/bar"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <WebView
+        android:id="@+id/webView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
 
 </RelativeLayout>

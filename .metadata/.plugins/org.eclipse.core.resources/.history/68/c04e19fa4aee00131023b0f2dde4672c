@@ -1,0 +1,23 @@
+package com.cgearc.yummy;
+
+import android.app.Activity;
+
+import com.cgearc.yummy.Frg_RecipeList.SearchCompletedListener;
+
+public interface SearchCompletedListener{
+	void onSearchCompleted();
+	
+}
+@Override
+public void onAttach(Activity activity) {
+    super.onAttach(activity);
+    
+    // This makes sure that the container activity has implemented
+    // the callback interface. If not, it throws an exception
+    try {
+        mCallback = (SearchCompletedListener) activity;
+    } catch (ClassCastException e) {
+        throw new ClassCastException(activity.toString()
+                + " must implement SearchCompletedListener");
+    }
+}

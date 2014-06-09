@@ -7,8 +7,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.cgearc.yummy.Act_RecipeDetail.ImageTask;
+import com.cgearc.yummy.Frg_RecipeList.SearchCompletedListener;
+
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -32,145 +36,111 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
-
+ 
 /**
  * Fragment that appears in the "content_frame", shows a planet
  */
-public class Act_RecipeSearch extends Activity {
-	public static final String ARG_PLANET_NUMBER = "planet_number";
+public class Act_RecipeSearch extends Activity implements OnQueryTextListener,SearchCompletedListener {
 	private static final String TAG = "nevin";
-	private RelativeLayout mRelativeLayout;
+	ListView mListView;
+	ProgressBar mProgressBar;
+	private SearchView mSearchView;
+	String[] item = new String[] { "電鍋","麵包","滷味","簡單","鮭魚","減肥","便當","嬰兒","副食品" };
 	
-	static int DEFAULT_TEXT_SIZE=14;
-	static int MAX_WIDTH  = 600;
-	static int MAX_HEIGHT = 400;
-	static int scale_ratio;
 	
-	TextView mDetail;
-	ProgressBar bar;
-	String body;
-	Handler handler;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.act_recipe_detail);
+		setContentView(R.layout.act_recipe_search);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		if (this.getIntent().getStringExtra("body") != null)
-			body = this.getIntent().getStringExtra("body");
-
-		mDetail = (TextView) this.findViewById(R.id.tv_recipe_detail);
-
-		if (this.getIntent().getStringExtra("body") != null)
-			body = this.getIntent().getStringExtra("body");
-
-		mDetail.setText(Html.fromHtml(body));
-
-		bar = (ProgressBar) this.findViewById(R.id.bar);
-		mDetail.setMovementMethod(ScrollingMovementMethod.getInstance());// 滚动
-		handler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				// TODO Auto-generated method stub
-				if (msg.what == 0x101) {
-					bar.setVisibility(View.GONE);
-					mDetail.setText((CharSequence) msg.obj);
-				}
-				super.handleMessage(msg);
-			}
-		};
-		// 因为从网上下载图片是耗时操作 所以要开启新线程
-		Thread t = new Thread(new ImageTask());
-		t.start();
-		bar.setVisibility(View.VISIBLE);
-
+		mListView = (ListView) this.findViewById(R.id.lv_tag);
+		mProgressBar = (ProgressBar)this.findViewById(R.id.pb_r_search);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_expandable_list_item_1, item);
+		
+		
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+		    public void onItemClick(AdapterView<?> parent, View view,
+		        int position, long id) { 
+		    	Log.d(TAG,position+"."+ id + "pressed");
+		    	Frg_RecipeList fragment = new Frg_RecipeList();
+				FragmentManager fragmentManager = getFragmentManager();
+		        fragmentManager.beginTransaction().replace(R.id.recipe_container, fragment).commit();
+		        Bundle args = new Bundle();
+		        args.putString("query",item[(int) id] );
+		        fragment.setArguments(args);
+		        mListView.setVisibility(View.INVISIBLE);
+		        mProgressBar.setVisibility(View.VISIBLE);
+		        
+		    }
+		});
+		TextView tv= new TextView(this);
+		tv.setText("熱門關鍵字");
+		tv.setTextSize(30f);
+		tv.setPadding(5, 0, 0, 0);
+		tv.setTextColor(getResources().getColor(android.R.color.darker_gray));
+		mListView.addHeaderView(tv);
+		
+		mListView.setAdapter(adapter);
 	}
-	class ImageTask implements Runnable {
-		Message msg = Message.obtain();
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.search, menu);
 
-		@Override
-		public void run() {
-
-			ImageGetter imageGetter = new ImageGetter() {
-				@Override
-				public Drawable getDrawable(String source) {
-					// TODO Auto-generated method stub
-					URL url;
-					Drawable drawable = null;
-					try {
-						url = new URL(source);
-						drawable = Drawable.createFromStream(
-								url.openStream(), null);
-						
-						int scale_y = MAX_HEIGHT/drawable.getIntrinsicHeight();
-						drawable.setBounds(0, 0,
-								drawable.getIntrinsicWidth()*scale_y,
-								drawable.getIntrinsicHeight()*scale_y);
-						
-					} catch (MalformedURLException e) {
-						Log.e(TAG, "MalformedURLException" + e.toString());
-					} catch (IOException e) {
-						Log.e(TAG, "IOException" + e.toString());
-					}
-					return drawable;
-				}
-			};
-			CharSequence test = Html.fromHtml(body, imageGetter, null);
-			msg.what = 0x101;
-			msg.obj = test;
-			handler.sendMessage(msg);
-		}
+	    return true;
 	}
 	@Override
-	public void onBackPressed() {
-		// finish() is called in super: we only override this method to be able
-		// to override the transition
-		super.onBackPressed();
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // If the nav drawer is open, hide action items related to the content view
+        MenuItem searchItem = menu.findItem(R.id.action_searchview);
+        mSearchView = (SearchView) searchItem.getActionView();
+        mSearchView.setIconifiedByDefault(false) ;
+        // mSearchView.requestFocus();
+        mSearchView.setOnQueryTextListener(this);
+        mSearchView.setQueryHint("輸入食譜關鍵字");
+        return super.onPrepareOptionsMenu(menu);
+    }
 
-		overridePendingTransition(R.anim.activity_back_in,
-				R.anim.activity_back_out);
+	@Override
+	public boolean onQueryTextChange(String arg0) {
+		// only take action when search keyword is submited
+		return false;
 	}
 
-	@Override 
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.detail, menu);
-		return super.onCreateOptionsMenu(menu);
+	@Override
+	public boolean onQueryTextSubmit(String arg0) {
+		
+		mProgressBar.setVisibility(View.VISIBLE);
+		Frg_RecipeList fragment = new Frg_RecipeList();
+		FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.recipe_container, fragment).commit();
+        Bundle args = new Bundle();
+        args.putString("query",arg0 );
+        fragment.setArguments(args);
+		return false;
 	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 
 		switch (id) {
-		case R.id.action_font_up:
-			mDetail.setTextSize(++DEFAULT_TEXT_SIZE);
-			return true;
-		case R.id.action_font_down:
-			mDetail.setTextSize(--DEFAULT_TEXT_SIZE);
-			return true;
-		case R.id.action_big_img:
-			MAX_HEIGHT= 600;
-			Thread t = new Thread(new ImageTask());
-			t.start();
-			bar.setVisibility(View.VISIBLE);
-			return true;
-		case R.id.action_small_img:
-			MAX_HEIGHT= 300;
-			Thread t2 = new Thread(new ImageTask());
-			t2.start();
-			bar.setVisibility(View.VISIBLE);
-			return true;
-
-			// up button
 		case android.R.id.home:
 			finish();
 			overridePendingTransition(R.anim.activity_back_in,
@@ -181,4 +151,9 @@ public class Act_RecipeSearch extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	public void onSearchCompleted() {
+		mProgressBar.setVisibility(View.INVISIBLE);
+		
+	}
 }
