@@ -12,3 +12,17 @@
 1402247377978	Delete elements
 1402247459111	Copy file
 1402336992326	Rename field 'body'
+1402474740336	Rename field 'handC'
+1402474760767	Rename field 'handChangeTextSize'
+1402500964970	Delete element
+1402501923808	Delete elements
+1402501976714	Delete elements
+1402502105159	Copy files
+1402502125921	Delete elements
+1402502248798	Rename resource 'ic_commit_search_api_holo_dark.png'
+1402502662762	Rename package 'de.greenrobot.daogenerator.gentest'
+1402502739099	Rename type 'ExampleDaoGenerator'
+1402502804125	Rename type 'DaoGenerator'
+1402502814736	Rename package 'com.cgearc.daogenerator'
+1402502890902	Rename package 'de.greenrobot.daogenerator.gentest'
+1402502950692	Delete element

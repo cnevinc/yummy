@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.etsy.android.sample.R"/>
 <fullyQualifiedTypeName name="com.cgearc.yummy.R.drawable"/>
 <fullyQualifiedTypeName name="android.app.Fragment"/>
 <fullyQualifiedTypeName name="android.app.FragmentTransaction"/>
 <fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
-<fullyQualifiedTypeName name="com.cgearc.yummy.R.id"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="org.apache.http.impl.client.DefaultHttpClient"/>
 <fullyQualifiedTypeName name="org.apache.http.client.methods.HttpGet"/>
@@ -19,7 +17,6 @@
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="org.json.JSONException"/>
 <fullyQualifiedTypeName name="android.net.ParseException"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.android.volley.util.NetworkImageView"/>
 <fullyQualifiedTypeName name="com.cgearc.yummy.HotRecipeFragment.ArticleAdapter"/>
 <fullyQualifiedTypeName name="android.graphics.Picture"/>
@@ -33,8 +30,6 @@
 <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
 <fullyQualifiedTypeName name="android.text.Spanned"/>
 <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
-<fullyQualifiedTypeName name="android.webkit.WebView"/>
-<fullyQualifiedTypeName name="android.webkit.WebSettings"/>
 <fullyQualifiedTypeName name="android.app.Activity"/>
 <fullyQualifiedTypeName name="android.os.Handler"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
@@ -53,4 +48,16 @@
 <fullyQualifiedTypeName name="android.graphics.drawable.LevelListDrawable"/>
 <fullyQualifiedTypeName name="android.graphics.BitmapFactory"/>
 <fullyQualifiedTypeName name="android.text.Html"/>
+<fullyQualifiedTypeName name="android.webkit.WebView"/>
+<fullyQualifiedTypeName name="com.cgearc.yummy.R.id"/>
+<fullyQualifiedTypeName name="android.os.Environment"/>
+<fullyQualifiedTypeName name="android.webkit.WebSettings"/>
+<fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.samsung.android.sdk.gesture.Sgesture"/>
+<fullyQualifiedTypeName name="com.samsung.android.sdk.gesture.SgestureHand"/>
+<fullyQualifiedTypeName name="com.samsung.android.sdk.gesture.SgestureHand.Info"/>
+<fullyQualifiedTypeName name="com.samsung.android.sdk.SsdkUnsupportedException"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.os.Looper"/>
 </qualifiedTypeNameHistroy>

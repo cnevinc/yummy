@@ -1,0 +1,29 @@
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_full_screen"
+        android:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_action_full_screen"
+        android:title="full Screen"/>
+    
+    <item
+        android:id="@+id/action_img"
+        android:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_action_picture"
+        android:title="Dispplay Img"/>
+    
+    <item
+        android:id="@+id/action_zoom"
+        android:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_menu_search"
+        android:title="Zoom"/>
+
+    <item
+        android:id="@+id/action_text_size"
+        android:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_commit_search_api_holo_light"
+        android:title="Text Size"/>
+    
+    
+</menu>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;de.greenrobot.daogenerator.gentest&apos; to &apos;Yummy/src&apos;&#x0D;&#x0A;- Original project: &apos;DaoGenerator&apos;&#x0D;&#x0A;- Destination element: &apos;Yummy/src&apos;&#x0D;&#x0A;- Original element: &apos;DaoGenerator/src/de.greenrobot.daogenerator.gentest&apos;" description="Copy package" destination="=Yummy/src" element1="/src&lt;de.greenrobot.daogenerator.gentest" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1402502637086" version="1.0"/>
+</session>

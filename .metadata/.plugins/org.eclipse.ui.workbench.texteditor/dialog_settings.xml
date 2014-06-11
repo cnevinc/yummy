@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Log." key="selection"/>
+		<item value="gestureListenerZoom" key="selection"/>
 		<list key="findhistory">
-			<item value="log."/>
-			<item value="Menu"/>
+			<item value="gestureListenerZoom"/>
 			<item value="menu"/>
-			<item value="Log."/>
-			<item value="movemen"/>
-			<item value=" oveme"/>
-			<item value="imageListener"/>
-			<item value="onGetImageSuccess"/>
+			<item value="DOWN"/>
+			<item value="DEFAULT_TEXT_SIZE"/>
+			<item value="texts"/>
+			<item value="textse"/>
+			<item value="img src"/>
+			<item value="setTextSize"/>
 		</list>
 		<list key="replacehistory">
 		</list>
